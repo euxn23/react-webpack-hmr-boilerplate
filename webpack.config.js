@@ -29,32 +29,32 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
       },
       {
         test: /\.less$/,
-        loader: 'style!css!less',
+        loader: 'style-loader!css-loader!less-loader',
       },
       {
         test: /\.css$/,
-        loader: 'style!css',
+        loader: 'style-loader!css-loader',
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff',
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file',
+        loader: 'file-loader',
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: 'file?hash=sha512&digest=hex&name=assets/[hash].[ext]',
+        loader: 'file-loader?hash=sha512&digest=hex&name=assets/[hash].[ext]',
       },
     ],
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
 };
