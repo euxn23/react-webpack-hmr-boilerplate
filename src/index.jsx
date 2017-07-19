@@ -6,10 +6,9 @@ import { AppContainer } from 'react-hot-loader';
 
 import App from './app-component';
 
-// Assets
-require('bootstrap/dist/css/bootstrap.css');
-require('font-awesome/css/font-awesome.css');
-require('./style.less');
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
+import './style.less';
 
 
 const render = Component => ReactDOM.render(<Component />, document.querySelector('#app'));
