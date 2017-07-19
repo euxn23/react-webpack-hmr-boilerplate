@@ -12,19 +12,13 @@ require('font-awesome/css/font-awesome.css');
 require('./style.less');
 
 
-ReactDOM.render(
-  <App />,
-  document.querySelector('#app')
-);
+const render = Component => ReactDOM.render(<Component />, document.querySelector('#app'));
+
+render(App);
 
 if (module.hot) {
   module.hot.accept('./app-component', () => {
-    const NextApp = require('./app-component').default;
-    ReactDOM.render(
-      <AppContainer>
-        <NextApp />
-      </AppContainer>,
-      document.querySelector('#app')
-    );
+    require('./app-component');
+    render(App);
   });
 }
