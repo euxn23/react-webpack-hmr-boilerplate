@@ -1,43 +1,43 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
 
 module.exports = {
   entry: [
     './src/index',
   ],
-
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new HtmlWebpackPlugin({
-      hash: false,
-      template: './src/index.html',
-    }),
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /nb/),
-  ],
-
-  devtool: 'cheap-module-source-map',
-
   output: {
     path: path.resolve(__dirname, 'public'),
     publicPath: '/',
     filename: 'bundle.js',
   },
-
+  plugins: [
+    new HtmlWebpackPlugin({
+      hash: false,
+      template: './src/static/index.html',
+    }),
+    new webpack.DefinePlugin({
+      WEBPACK_ENV_ENDPOIND: JSON.stringify(process.env.WEBPACK_ENV_ENDPOINT)
+    }),
+  ],
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-      },
-      {
-        test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader',
+        options: {
+          presets: ['react', 'es2015', 'stage-3'],
+        }
       },
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader',
+      },
+      {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader',
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -53,8 +53,8 @@ module.exports = {
       },
     ],
   },
-
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  devtool: 'eval',
 };
