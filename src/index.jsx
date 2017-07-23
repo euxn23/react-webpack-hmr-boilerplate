@@ -8,7 +8,7 @@ import App from './app-component';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
-import './style.less';
+import './style/app.less';
 
 
 const render = Component => ReactDOM.render(<Component />, document.querySelector('#app'));
