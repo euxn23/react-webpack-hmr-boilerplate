@@ -18,7 +18,7 @@ module.exports = {
       template: './src/static/index.html',
     }),
     new webpack.DefinePlugin({
-      WEBPACK_ENV_ENDPOIND: JSON.stringify(process.env.WEBPACK_ENV_ENDPOINT)
+      WEBPACK_ENV_ENDPOINT: JSON.stringify(process.env.WEBPACK_ENV_ENDPOINT)
     }),
   ],
   module: {
